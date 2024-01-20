@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.custom-gradient{
+  border: 1px solid #ffffff22;
+  background-color: #282c34;
+  background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.3) 100%);
+  box-shadow: 0 7px 20px 5px #00000088;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
