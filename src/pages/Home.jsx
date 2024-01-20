@@ -34,13 +34,13 @@ const Home = () => {
 
       setUserData(userResponse?.data);
       setUserRepositories(repositoriesResponse?.data);
-    //   console.log(repositoriesResponse.data);
+      //   console.log(repositoriesResponse.data);
     } catch (error) {
       console.error(error);
     }
   };
   return (
-    <div className="bg-[#161418] text-white min-h-screen flex px-20">
+    <div className="bg-[#161418] text-white min-h-screen flex px-20 py-10">
       {/* User Profile Section */}
       <section className="flex items-center flex-col w-[30vw] pl-6">
         <div>
@@ -71,13 +71,38 @@ const Home = () => {
 
       {/* Repositories Section */}
       <section className="flex-1">
+        <div className="flex justify-end mt-4 text-gray-400">
+          {/* Label for Repos per page dropdown */}
+          <label className="mr-2">Repos per page:</label>
+
+          {/* Dropdown for selecting repositories per page */}
+          <select
+            value={reposPerPage}
+            onChange={(e) => {
+              // Ensure the selected value is at least 1
+              const selectedValue = Math.max(1, Number(e.target.value));
+
+              // Set the selected value as the new reposPerPage
+              setReposPerPage(selectedValue);
+            }}
+            className="bg-gray-700 text-white px-2 py-1 rounded"
+          >
+            {/* Options for repositories per page */}
+            {[10, 20, 30, 50, 100].map((perPage) => (
+              <option key={perPage} value={perPage}>
+                {perPage}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <div className=" grid grid-flow-row grid-cols-2 gap-4 px-6">
           {userRepositories.map((item, index) => {
             return <Card key={index} repoData={item} />;
           })}
         </div>
         {/* Pagination section */}
-        <div className="flex justify-center mt-4 ">
+        <div className="flex justify-center mt-4">
           <button
             onClick={() =>
               setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))
@@ -89,7 +114,8 @@ const Home = () => {
           </button>
           <button
             onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
-            className="px-4 py-2 bg-gray-800 text-white"
+            disabled={userRepositories.length < reposPerPage}
+            className="px-4 py-2 bg-gray-800 text-white disabled:opacity-50"
           >
             Next
           </button>
