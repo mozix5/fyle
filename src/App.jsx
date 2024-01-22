@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
-    <div className="bg-[#161418] min-h-screen">
+    <div className="bg-[#171717] min-h-screen">
       <DataProvider>
         <Navbar />
         <Routes>

@@ -48,10 +48,10 @@ const Navbar = ({ userName }) => {
   };
 
   return (
-    <nav className="custom-gradient sticky top-0 z-10 p-4 flex items-center justify-between">
+    <nav className=" bg-[#171717] z-10 pt-6 pb-4 px-8 flex items-center justify-between">
       <div className="flex items-center">
-        <FaGithub className="text-white text-3xl mr-2" />
-        <span className="text-white text-xl font-semibold">{userName}</span>
+        <FaGithub className="text-white text-4xl mr-2" />
+        <span className="text-white text-xl font-semibold pl-2">mozix5</span>
       </div>
       <div className="flex items-center h-8">
         <input
@@ -59,7 +59,7 @@ const Navbar = ({ userName }) => {
           placeholder="Search repositories..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="input"
+          className="input w-24 md:w-48"
         />
         <button onClick={handleSearch} className="search__btn ">
           <FiSearch className="text-xl text-white" />
