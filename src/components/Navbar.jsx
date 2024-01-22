@@ -24,6 +24,13 @@ const Navbar = ({ userName }) => {
     // setUserRepositories(searchedRepo);
   };
 
+   // Event handler for the "Enter" key press
+   const handleEnterKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   // Asynchronous function to fetch repositories based on the search query
   const fetchData = async () => {
     try {
@@ -59,6 +66,7 @@ const Navbar = ({ userName }) => {
           placeholder="Search repositories..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyDown={handleEnterKeyPress}
           className="input w-24 md:w-48"
         />
         <button onClick={handleSearch} className="search__btn ">
